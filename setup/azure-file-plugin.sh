@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 config=$1
 wget -qO /usr/bin/azurefile-dockervolumedriver https://github.com/Azure/azurefile-dockervolumedriver/releases/download/0.2.1/azurefile-dockervolumedriver
 chmod +x /usr/bin/azurefile-dockervolumedriver

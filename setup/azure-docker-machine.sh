@@ -10,7 +10,7 @@ docker-machine create --driver azure --azure-subscription-id $subs --azure-locat
 # Copy and execute azure plugin installation script on machine
 docker-machine scp azure-file-plugin.sh datadocker:~
 docker-machine scp $config datadocker:~
-docker-machine ssh datadocker ./azure-file-plugin.sh $config
+docker-machine ssh datadocker sudo ./azure-file-plugin.sh $config
 
 # ssh onto machine, switch context to machine
 eval $("C:\Program Files\Docker Toolbox\docker-machine.exe" env datadocker)

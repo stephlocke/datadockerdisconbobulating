@@ -1,1 +1,1 @@
-./azure-docker-machine.sh subscriptionid storage-key
+./azure-docker-machine.sh blah azurefile-dockervolumedriver
