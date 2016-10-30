@@ -1,0 +1,1 @@
+./azure-docker-machine.sh subscriptionid storage-key
