@@ -1,6 +1,6 @@
 #!/bin/bash
 # This file sets up the docker machine for containers to use
-
+set -eu
 subs=$1
 config=$2
 
