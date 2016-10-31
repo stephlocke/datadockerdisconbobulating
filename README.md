@@ -10,6 +10,11 @@ The [sample setup](./setup/sample-execution.sh) shows how you can pass a subscri
 You may need to perform a device authentication step, which is pretty simple.
 ![](./readme/executionprocess1.jpg)
 
+Once completed, you may need to make the new machine the active docker-machine
+```
+eval $("C:\Program Files\Docker Toolbox\docker-machine.exe" env datadocker)
+```
+
 ## Cleanup
 The nice thing about using Azure and seperate docker-machine is how easy it is to trash it after you're done.
 
