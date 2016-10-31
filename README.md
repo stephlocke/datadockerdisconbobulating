@@ -6,7 +6,7 @@
 - [Data](#data)
 - [Demo setup](#setup)
 - [Basic demo](#basic-demo)
-- [Misc info](#misc-items)
+- [Misc info](#misc-info)
 
 ## Docker
 
