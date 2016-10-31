@@ -44,3 +44,12 @@ docker run -v logs:/logs stephlocke/ddd-simplewrites
 ```
 
 This kicks off the docker container `stephlocke/ddd-simplewrites` from dockerhub and mounts the volume logs to the container. This overrides the default log volume mentioned in the Dockerfile for this container.
+
+### At volume!
+Let's set some of these to constantly kill and recreate themselves
+
+```
+docker run --name="docker1" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
+docker run --name="docker2" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
+docker run --name="docker3" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
+```
