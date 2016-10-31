@@ -45,24 +45,37 @@ docker-machine rm datadocker
 ```
 
 ## Basic demo
-This is the sort of scenario where you just need to ship writes, like to a log.
+This is the sort of scenario where you just need to do work a failry simple file system, for instance writing logs.
 
+### Making a write
 On your docker-machine run
 
 ```
 docker run -v logs:/logs stephlocke/ddd-simplewrites
 ```
 
-This kicks off the docker container `stephlocke/ddd-simplewrites` from dockerhub and mounts the volume logs to the container. This overrides the default log volume mentioned in the Dockerfile for this container.
+This kicks off the docker container [`stephlocke/ddd-simplewrites`](https://hub.docker.com/r/stephlocke/ddd-simplewrites/) from dockerhub and mounts the volume logs to the container. This overrides the default log volume mentioned in the Dockerfile for this container. It then simply writes the hostname to a file.
+
+*See the [Dockerfile](simplewrites/Dockerfile)*
 
 ### At volume!
-Let's set some of these to constantly kill and recreate themselves
+Let's set some of these to constantly kill and recreate themselves in the background.
 
 ```
 docker run --name="docker1" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
 docker run --name="docker2" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
 docker run --name="docker3" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
 ```
+
+### Add a reader
+
+```
+docker run -v logs:/logs stephlocke/ddd-simplereads
+```
+
+This kicks off the docker container [`stephlocke/ddd-simplereads`](https://hub.docker.com/r/stephlocke/ddd-simplereads/) from dockerhub and mounts the volume logs to the container. This overrides the default log volume mentioned in the Dockerfile for this container. It then simply shows the tail of the file being written to by our containers.
+
+*See the [Dockerfile](simplereads/Dockerfile)*
 
 ### Why wouldn't you do this?
 The demo is a super simple one. It's not very sensible if you have multiple instances all running at the same time, trying to write to the same file. A sensible person would write to a file named after the instance or pass results to API for it to handle concurrency.
