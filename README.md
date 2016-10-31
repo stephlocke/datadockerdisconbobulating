@@ -53,3 +53,6 @@ docker run --name="docker1" --restart=always -d -v logs:/logs stephlocke/ddd-sim
 docker run --name="docker2" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
 docker run --name="docker3" --restart=always -d -v logs:/logs stephlocke/ddd-simplewrites
 ```
+
+### Why wouldn't you do this?
+The demo is a super simple one. It's not very sensible if you have multiple instances all running at the same time, trying to write to the same file. A sensible person would write to a file named after the instance or pass results to API for it to handle concurrency.
