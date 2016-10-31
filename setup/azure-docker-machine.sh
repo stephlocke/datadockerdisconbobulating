@@ -17,5 +17,4 @@ eval $("C:\Program Files\Docker Toolbox\docker-machine.exe" env datadocker)
 
 # Create azure volumes
 docker volume create --name logs -d azurefile -o share=logs
-docker volume create --name config -d azurefile -o share=config
-docker volume create --name simpledb -d azurefile -o share=simpledb
+docker volume create --name db -d azurefile -o share=db
