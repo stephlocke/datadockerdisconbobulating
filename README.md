@@ -1,7 +1,16 @@
 # Data + Docker = Disconbobulating?
 > Data should live forever. Docker containers should be constantly killed and reborn. How do you match up these two opposing requirements to do data persistence in a docker environment?
 
-This repo contains setup and demo scripts for Steph Locke's **Data + Docker = Disconbobulating?** talk. Please feel free to fork it, play with it, and hopefully improve it! Pull Requests are welcome :)
+## Contents
+- [Docker](#docker)
+- [Data](#data)
+- [Demo setup](#setup)
+- [Basic demo](#basic-demo)
+- [Misc info](#misc-items)
+
+## Docker
+
+## Data
 
 ## Setup
 In the [`setup/`](./setup/) folder, code amended from an [earlier gist](https://gist.github.com/stephlocke/a02d7b8be42604e5b6bbd19d689ab28f) is used to perform setup on Azure. This is a preference not a requirement.
@@ -35,7 +44,7 @@ The nice thing about using Azure and seperate docker-machine is how easy it is t
 docker-machine rm datadocker
 ```
 
-## Basic writing
+## Basic demo
 This is the sort of scenario where you just need to ship writes, like to a log.
 
 On your docker-machine run
@@ -57,3 +66,9 @@ docker run --name="docker3" --restart=always -d -v logs:/logs stephlocke/ddd-sim
 
 ### Why wouldn't you do this?
 The demo is a super simple one. It's not very sensible if you have multiple instances all running at the same time, trying to write to the same file. A sensible person would write to a file named after the instance or pass results to API for it to handle concurrency.
+
+
+## Misc info
+This repo contains Steph Locke's **Data + Docker = Disconbobulating?** talk. Please feel free to fork it, play with it, and hopefully improve it! Pull Requests are welcome :)
+
+Everything is [licensed under MIT](LICENSE)
