@@ -6,6 +6,7 @@
 - [Data](#data)
 - [Demo setup](#setup)
 - [Basic demo](#basic-demo)
+- [A database](#a-database)
 - [Misc info](#misc-info)
 
 ## Docker
@@ -80,6 +81,35 @@ This kicks off the docker container [`stephlocke/ddd-simplereads`](https://hub.d
 ### Why wouldn't you do this?
 The demo is a super simple one. It's not very sensible if you have multiple instances all running at the same time, trying to write to the same file. A sensible person would write to a file named after the instance or pass results to API for it to handle concurrency.
 
+## A database
+Let's build a more ocmplicated, and more common scenario. A database and an application.
+
+Get a docker container up and running. This will initialise database files in the directory.
+
+```
+docker run -d -v dbs:/var/lib/mysql -p 6603:3306 --env="MYSQL_ROOT_PASSWORD=mypassword" --name mydb mysql
+
+# docker stop mydb
+# docker rm mydb
+```
+
+### Attach to existing database files
+
+```
+docker run -d -v dbs:/var/lib/mysql -p 6603:3306 --env="MYSQL_ROOT_PASSWORD=mypassword" --name mydb mysql
+```
+
+### Nature of locks
+MySQL tries to lock files for use. Creating multiple database instances over the same files tends not to work.
+
+```
+docker run -d -v dbs:/var/lib/mysql -p 6604:3306 --env="MYSQL_ROOT_PASSWORD=mypassword" --name mydb2 mysql
+docker exec -it mydb mysql -u root -p
+mysql> show databases;
+mysql> create database blah;
+mysql>exit
+docker ps
+```
 
 ## Misc info
 This repo contains Steph Locke's **Data + Docker = Disconbobulating?** talk. Please feel free to fork it, play with it, and hopefully improve it! Pull Requests are welcome :)
