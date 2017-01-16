@@ -47,13 +47,16 @@ docker volume create --name simpledb -d azurefile -o share=simpledb
 
 The [sample setup](./setup/sample-execution.sh) shows how you can pass a subscription ID and the name of a config file to the [docker machine setup](./setup/azure-docker-machine.sh). Obviously the sample doesn't work because it has dummy values in it! You'll need to amend with your own values, make sure to amend `setup/azurefile-dockervolumedriver` and `setup/sample-execution.sh`
 
-[![Create a docker-machine video](./readme/createdockermachinevideo.jpg)](https://www.youtube.com/watch?v=d1JrzMSRvM0 "Create and external docker-machine")
+[![Create a docker-machine video](./readme/createdockermachinevideo.jpg)](https://www.youtube.com/watch?v=d1JrzMSRvM0&CC "Create and external docker-machine")
 
-You may need to perform a device authentication step, which will depend on cloud provider. Once completed, you may need to make the new machine the active docker-machine
+You may need to perform a device authentication step, which will depend on cloud provider. 
+
+Once completed, you may need to [make the new machine the active docker-machine]()
 
 ```
 eval $("C:\Program Files\Docker Toolbox\docker-machine.exe" env datadocker)
 ```
+
 
 ### Cleanup
 The nice thing about using Azure and seperate docker-machine is how easy it is to trash it after you're done.
@@ -94,6 +97,9 @@ docker run -v logs:/logs stephlocke/ddd-simplereads
 This kicks off the docker container [`stephlocke/ddd-simplereads`](https://hub.docker.com/r/stephlocke/ddd-simplereads/) from dockerhub and mounts the volume logs to the container. This overrides the default log volume mentioned in the Dockerfile for this container. It then simply shows the tail of the file being written to by our containers.
 
 *See the [Dockerfile](simplereads/Dockerfile)*
+
+### Checking out how this works
+[![A simple writes file](./readme/simplewrites.jpg)](https://www.youtube.com/watch?v=_lfPRaObCtU&CC "A simple writes file")
 
 ### Why wouldn't you do this?
 The demo is a super simple one. It's not very sensible if you have multiple instances all running at the same time, trying to write to the same file. A sensible person would write to a file named after the instance or pass results to API for it to handle concurrency.
