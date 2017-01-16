@@ -34,7 +34,7 @@ Thankfully, Docker containers can connect to external data volumes. This enables
 ## Setup
 In the [`setup/`](./setup/) folder, code amended from an [earlier gist](https://gist.github.com/stephlocke/a02d7b8be42604e5b6bbd19d689ab28f) is used to perform setup on Azure. This is a preference not a requirement.
 
-The script installs the Azure file storage plugin to allow us to work with a file storage system that's basically unlimited and taken care of by someone else. I don't have to worry about hard drive failures and I can encrypt data at rest. 
+The script installs the Azure file storage plugin to allow us to work with a file storage system that's basically unlimited and taken care of by someone else. I don't have to worry about hard drive failures and I can encrypt data at rest.
 
 Once this plugin is installed on our docker-machine it then goes on to create some volumes we can use in our demos. You could alternatively create these on the local machine.
 
@@ -45,12 +45,11 @@ docker volume create --name config -d azurefile -o share=config
 docker volume create --name simpledb -d azurefile -o share=simpledb
 ```
 
-The [sample setup](./setup/sample-execution.sh) shows how you can pass a subscription ID and the name of a config file to the [docker machine setup](./setup/azure-docker-machine.sh). Obviously the sample doesn't work because it has dummy values in it! You'll need to amend with your own values.
+The [sample setup](./setup/sample-execution.sh) shows how you can pass a subscription ID and the name of a config file to the [docker machine setup](./setup/azure-docker-machine.sh). Obviously the sample doesn't work because it has dummy values in it! You'll need to amend with your own values, make sure to amend `setup/azurefile-dockervolumedriver` and `setup/sample-execution.sh`
 
-You may need to perform a device authentication step, which is pretty simple.
-![](./readme/executionprocess1.jpg)
+[![Create a docker-machine video](./readme/createdockermachinevideo.jpg)](https://www.youtube.com/watch?v=d1JrzMSRvM0 "Create and external docker-machine")
 
-Once completed, you may need to make the new machine the active docker-machine
+You may need to perform a device authentication step, which will depend on cloud provider. Once completed, you may need to make the new machine the active docker-machine
 
 ```
 eval $("C:\Program Files\Docker Toolbox\docker-machine.exe" env datadocker)
