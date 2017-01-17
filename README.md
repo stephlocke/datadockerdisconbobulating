@@ -2,7 +2,7 @@
 > Data should live forever. Docker containers should be constantly killed and reborn. How do you match up these two opposing requirements to do data persistence in a docker environment?
 
 # TL;DR;
-- Read the [slides](//stephlocke.info/datadockerdisconbobulating/datadockerdisconbobulating.html)
+- Read the [slides](http://stephlocke.info/datadockerdisconbobulating/datadockerdisconbobulating.html)
 - Check out the [demo videos](https://www.youtube.com/playlist?list=PL1ROw3K8pbB1BG0TTAe63G4BsSBkIJYwX)
 
 ## Contents
