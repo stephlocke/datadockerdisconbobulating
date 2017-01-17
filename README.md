@@ -1,6 +1,10 @@
 # Data + Docker = Disconbobulating?
 > Data should live forever. Docker containers should be constantly killed and reborn. How do you match up these two opposing requirements to do data persistence in a docker environment?
 
+# TL;DR;
+- Read the [slides](//stephlocke.info/datadockerdisconbobulating/datadockerdisconbobulating.html)
+- Check out the [demo videos](https://www.youtube.com/playlist?list=PL1ROw3K8pbB1BG0TTAe63G4BsSBkIJYwX)
+
 ## Contents
 - [Data](#data)
 - [Docker](#docker)
@@ -47,7 +51,6 @@ docker volume create --name simpledb -d azurefile -o share=simpledb
 
 The [sample setup](./setup/sample-execution.sh) shows how you can pass a subscription ID and the name of a config file to the [docker machine setup](./setup/azure-docker-machine.sh). Obviously the sample doesn't work because it has dummy values in it! You'll need to amend with your own values, make sure to amend `setup/azurefile-dockervolumedriver` and `setup/sample-execution.sh`
 
-[![Create a docker-machine video](./readme/createdockermachinevideo.jpg)](https://www.youtube.com/watch?v=d1JrzMSRvM0&CC "Create and external docker-machine")
 
 You may need to perform a device authentication step, which will depend on cloud provider. 
 
@@ -98,8 +101,6 @@ This kicks off the docker container [`stephlocke/ddd-simplereads`](https://hub.d
 
 *See the [Dockerfile](simplereads/Dockerfile)*
 
-### Checking out how this works
-[![A simple writes file](./readme/simplewrites.jpg)](https://www.youtube.com/watch?v=_lfPRaObCtU&CC "A simple writes file")
 
 ### Why wouldn't you do this?
 The demo is a super simple one. It's not very sensible if you have multiple instances all running at the same time, trying to write to the same file. A sensible person would write to a file named after the instance or pass results to API for it to handle concurrency.
